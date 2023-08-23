@@ -42,7 +42,7 @@
         <td>
           <div class="row">
             <div class="col-md-4">
-              <select class="form-select" aria-label="Default select example" id="cate1" name="cate1">
+              <select class="form-select" aria-label="Default select example" id="cate1" name="cate1" required>
                 <option selected disabled>대분류</option>
                 <?php
                 foreach($cate1 as $c){            
@@ -80,7 +80,7 @@
           <label for="name">가격</label>
         </th>
         <td>
-          <input type="number" name="price" id="price" min="10000" max="1000000" step="10000" class="form-control" value="10000">
+          <input type="number" name="price" id="price" min="10000" max="1000000" step="10000" class="form-control" value="10000" required>
         </td>
       </tr>
       <tr>
@@ -119,7 +119,7 @@
       <tr>
         <th scope="row">판매종료일</th>
         <td>
-          <input type="text" name="sale_end_date" id="sale_end_date" class="form-control" value="<?php echo date("Y-m-d",strtotime("+6 month")); ?>">
+          <input type="text" name="sale_end_date" id="sale_end_date" class="form-control" value="<?php echo date("Y-m-d",strtotime("+6 month")); ?>" required>
         </td>
       </tr>
       <tr>
@@ -132,22 +132,45 @@
       <tr>
         <th scope="row">썸네일</th>
         <td>
-          <input type="file" name="thumbnail" id="thumbnail" class="form-control">
+          <input type="file" name="thumbnail" id="thumbnail" class="form-control" required>
         </td>
       </tr>      
-      <tr>
+      <!-- <tr>
         <th scope="row">추가이미지</th>
         <td>
           <input type="file" multiple id="upfile" class="visually-hidden">
           <button type="button" id="selectImg" class="btn btn-primary">이미지 선택</button>
           <div class="row" id="imageArea">
-             <!-- <div class="col" data-imgid="01">
-              <img src="" alt="">
-              <button class="btn btn-warning">삭제</button>
-             </div> -->
+          </div>
+        </td>
+      </tr> -->
+      
+      <!-- 이미지 드래그 앤 드롭 -->
+      <tr>
+        <th scope="row">추가이미지</th>
+        <td>
+          <div id="drop" class="box">
+            <span>여기로 drag & drop</span>
+            <div id="thumbnails" class="d-flex justify-content-start">
+
+              <!--
+              이렇게 만들어서 넣겠다
+              <div class="thumb">
+                <img src="" alt="">
+                <button type="button" data-idx="" class="close btn btn-warning">삭제</button>
+              </div>
+              <div class="thumb">
+                <img src="" alt="">
+                <button type="button" data-idx="" class="close btn btn-warning">삭제</button>
+              </div>
+              -->
+
+            </div>
           </div>
         </td>
       </tr>
+      
+
       <tr>
         <th scope="row">
           <label for="optionCate1">옵션 선택</label>
@@ -195,21 +218,52 @@
 </div>
 
 <script>
+  var uploadFiles = [];
+  var $drop = $("#drop");
+  $drop.on("dragenter", function(e) {  //드래그 요소가 들어왔을떄
+    $(this).addClass('drag-enter');
+  }).on("dragleave", function(e) {  //드래그 요소가 나갔을때
+    $(this).removeClass('drag-enter');
+  }).on("dragover", function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+  }).on('drop', function(e) {  //드래그한 항목을 떨어뜨렸을때
+    e.preventDefault();
+    $(this).removeClass('drag-enter');
+    var files = e.originalEvent.dataTransfer.files;  //드래그&드랍 항목
+    console.log(files);
+    for(var i = 0; i < files.length; i++) {
+      var file = files[i];
+      attachFile(file);
+    }
+    console.log(uploadFiles);
+  });
+
   $('#product_form').submit(function(){
-    
     let markupStr = $('#product_detail').summernote('code');
     let content = encodeURIComponent(markupStr);
     $('#content').val(content);
-  })
-  $('#upfile').change(function(){
-    let files = $(this).prop('files');
-    console.log(files);
 
-    for(file of files){      
-      attachFile(file);
+    if(!$('#cate1').val()){
+      alert('대분류를 선택해주세요');
+      return false;
     }
+    if ($('#product_detail').summernote('isEmpty')){
+      alert('상품 설명을 입력하세요');
+      return false;
+    }
+  })
+
+  //upfile 클릭 할일 -> 드래그앤드롭 추가 시 필요없어짐
+  // $('#upfile').change(function(){
+  //   let files = $(this).prop('files');
+  //   console.log(files);
+
+  //   for(file of files){      
+  //     attachFile(file);
+  //   }
     
-  });//upfile 클릭 할일
+  // });
 
   function attachFile(file){
     console.log(file);
@@ -248,12 +302,12 @@
           let imgid = $('#file_table_id').val() + return_data.imgid + ',';
           $('#file_table_id').val(imgid);
           let html = `
-              <div class="col" id="f_${return_data.imgid}" data-imgid="${return_data.imgid}">
+              <div class="thumb" id="f_${return_data.imgid}" data-imgid="${return_data.imgid}">
                 <img src="/abcmall/pdata/${return_data.savefile}" alt="">
                 <button type="button" class="btn btn-warning">삭제</button>
              </div>
           `;
-          $('#imageArea').append(html);
+          $('#thumbnails').append(html);
         }
       }
 
@@ -274,7 +328,7 @@
   });
 
 
-  $('#imageArea').on('click', 'button', function(){
+  $('#thumbnails').on('click', 'button', function(){
     let imgid = $(this).parent().attr('data-imgid');
     file_delete(imgid);
   });
