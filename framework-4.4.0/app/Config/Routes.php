@@ -8,3 +8,4 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('/board/list', 'Board::list');
 $routes->get('/board/write', 'Board::write');
+$routes->get('/boardview/(:num)', 'Board::view/$1');
