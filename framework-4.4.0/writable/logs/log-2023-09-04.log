@@ -1,0 +1,64 @@
+CRITICAL - 2023-09-04 02:12:08 --> CodeIgniter\Router\RouteCollection::get(): Argument #1 ($from) must be of type string, array given, called in C:\hoon\gitbasic\hoon_ex\framework-4.4.0\app\Config\Routes.php on line 11
+in SYSTEMPATH\Router\RouteCollection.php on line 1009.
+ 1 APPPATH\Config\Routes.php(11): CodeIgniter\Router\RouteCollection->get([...], 'writesave', 'Board::save')
+ 2 SYSTEMPATH\Router\RouteCollection.php(337): require('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CodeIgniter.php(783): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\CodeIgniter.php(442): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+CRITICAL - 2023-09-04 02:12:15 --> CodeIgniter\Router\RouteCollection::get(): Argument #1 ($from) must be of type string, array given, called in C:\hoon\gitbasic\hoon_ex\framework-4.4.0\app\Config\Routes.php on line 11
+in SYSTEMPATH\Router\RouteCollection.php on line 1009.
+ 1 APPPATH\Config\Routes.php(11): CodeIgniter\Router\RouteCollection->get([...], 'writesave', 'Board::save')
+ 2 SYSTEMPATH\Router\RouteCollection.php(337): require('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CodeIgniter.php(783): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\CodeIgniter.php(442): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+CRITICAL - 2023-09-04 02:12:17 --> CodeIgniter\Router\RouteCollection::get(): Argument #1 ($from) must be of type string, array given, called in C:\hoon\gitbasic\hoon_ex\framework-4.4.0\app\Config\Routes.php on line 11
+in SYSTEMPATH\Router\RouteCollection.php on line 1009.
+ 1 APPPATH\Config\Routes.php(11): CodeIgniter\Router\RouteCollection->get([...], 'writesave', 'Board::save')
+ 2 SYSTEMPATH\Router\RouteCollection.php(337): require('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CodeIgniter.php(783): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\CodeIgniter.php(442): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+CRITICAL - 2023-09-04 02:13:55 --> Undefined variable $request
+in APPPATH\Controllers\board.php on line 44.
+ 1 APPPATH\Controllers\board.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $request', 'C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\app\\Controllers\\board.php', 44)
+ 2 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->save()
+ 3 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+CRITICAL - 2023-09-04 02:15:27 --> Undefined variable $request
+in APPPATH\Controllers\board.php on line 44.
+ 1 APPPATH\Controllers\board.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $request', 'C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\app\\Controllers\\board.php', 44)
+ 2 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->save()
+ 3 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+CRITICAL - 2023-09-04 02:15:47 --> Call to undefined function App\Controllers\query()
+in APPPATH\Controllers\board.php on line 47.
+ 1 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->save()
+ 2 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+CRITICAL - 2023-09-04 02:16:06 --> Call to undefined function App\Controllers\query()
+in APPPATH\Controllers\board.php on line 47.
+ 1 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->save()
+ 2 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+CRITICAL - 2023-09-04 02:16:12 --> Call to undefined function App\Controllers\query()
+in APPPATH\Controllers\board.php on line 47.
+ 1 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->save()
+ 2 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')

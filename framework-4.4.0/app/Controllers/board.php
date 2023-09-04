@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\BoardModel;      // 사용할 모델을 로드
+use CodeIgniter\I18n\Time;      // 날짜 라이브러리
 class Board extends BaseController
 {
     public function list(): string
@@ -37,5 +38,18 @@ class Board extends BaseController
         $data['view'] = $boardModel -> where('bid', $bid) -> first();
 
         return render('board_view', $data);
+    }
+    public function save()
+    {
+        $db = db_connect();
+        $subject = $this->request->getVar('subject');
+        $content = $this->request->getVar('content');
+        $myTime = new Time('now', 'Asia/Seoul');
+        $myTime -> modify('+9 hours');
+        $formattedTime = $myTime -> toDateTimeString();
+
+        $sql = "INSERT INTO board (userid, subject, content, regdate) VALUES ('test', '{$subject}', '{$content}', '{$formattedTime}')";
+        $result = $db -> query($sql);
+        return $this->response->redirect(site_url('/board'));   // 쿼리 성공 후 board 페이지로 이동
     }
 }
