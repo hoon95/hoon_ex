@@ -9,3 +9,6 @@
     <div class="mb-3">
       내용 : <?= $view->content ?>
     </div>
+    <a href="/modify/<?=$view->bid;?>" class="btn btn-primary">수정</a>
+    <a href="/delete/<?=$view->bid;?>" class="btn btn-danger">삭제</a>
+    <hr>

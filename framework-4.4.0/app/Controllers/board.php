@@ -48,15 +48,59 @@ class Board extends BaseController
     }
     public function save()
     {
-        $db = db_connect();
-        $subject = $this->request->getVar('subject');
-        $content = $this->request->getVar('content');
-        $myTime = new Time('now', 'Asia/Seoul');
-        $myTime -> modify('+9 hours');
-        $formattedTime = $myTime -> toDateTimeString();
+        // $db = db_connect();
+        // $subject = $this->request->getVar('subject');
+        // $content = $this->request->getVar('content');
+        // $myTime = new Time('now', 'Asia/Seoul');
+        // $myTime ->modify('+9 hours');
+        // $formattedTime = $myTime -> toDateTimeString();
 
-        $sql = "INSERT INTO board (userid, subject, content, regdate) VALUES ('test', '{$subject}', '{$content}', '{$formattedTime}')";
-        $result = $db -> query($sql);
-        return $this->response->redirect(site_url('/board'));   // 쿼리 성공 후 board 페이지로 이동
+        // $sql = "INSERT INTO board (userid, subject, content, regdate) VALUES('test', ?,?,?)";
+        // $result = $db -> query($sql,[$subject, $content, $formattedTime]);   
+        $boardModel = new BoardModel();
+
+        $myTime = new Time('now', 'Asia/Seoul');
+        $myTime ->modify('+9 hours');     
+
+        $data = [
+            'userid' => $_SESSION['userid'],
+            'subject' => $this->request->getVar('subject'),
+            'content' => $this->request->getVar('content'),
+            'regdate' => $myTime -> toDateTimeString()
+        ];
+        $boardModel ->insert($data);
+
+
+        return $this->response ->redirect(site_url('/board')); //쿼리성공후 board 페이지로 이동
+    }
+    public function modify($bid = null){
+        // 레거시 문법
+        // $db = db_connect();
+        // $sql = "SELECT * FROM board WHERE bid={$bid}";
+        // $result = $db->query($sql);
+        // if($_SESSION['userid'] == $result->getRow()->userid){
+        //     $data['view'] = $result->getRow();
+        //     return render('board_write', $data);
+        // }else{
+        //     echo "<script>
+        //         alert('본인 글만 수정할 수 있습니다);
+        //         location.href='/board';                
+        //     </script>";
+        // }
+
+        // 모델 활용 문법
+        $boardModel = new BoardModel(); 
+        $board = $boardModel->find($bid);
+
+        if($_SESSION['userid'] == $board->userid){
+            $data['view'] = $board;
+            return render('board_write', $data);
+        }else{
+            return redirect()->to('/board')->with('alert','본인 글만 수정할 수 있습니다');
+        }
+
+    }
+    public function delete($bid = null){
+
     }
 }

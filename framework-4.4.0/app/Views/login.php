@@ -1,3 +1,7 @@
+<?php if($alert = session('alert')): ?>
+  <div class="alert alert-warning"><?= $alert ?></div>
+<?php endif ?>
+
 <form class="row g-3 needs-validation" action="<?php echo base_url(); ?>loginok" method="post">
 
 
