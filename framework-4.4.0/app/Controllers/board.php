@@ -21,8 +21,15 @@ class Board extends BaseController
 
         return render('board_list', $data);
     }
-    public function write(): string
+    public function write()
     {
+        if(!isset($_SESSION['userid'])){
+            // 레거시 문법
+            // echo "<script>alert('로그인하세요'); location.href='/login/';</script>";
+
+            // CI4 문법
+            return redirect()->to('/login')->with('alert','로그인하세요');
+        }
         return render('board_write');
     }
     public function view($bid = null)
