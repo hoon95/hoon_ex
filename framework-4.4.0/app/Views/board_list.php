@@ -1,3 +1,7 @@
+<?php if($alert = session('alert')): ?>
+  <div class="alert alert-warning"><?= $alert ?></div>
+<?php endif ?>
+
 <h2>게시판 목록</h2>
 <table class="table table-hover">
   <thead>

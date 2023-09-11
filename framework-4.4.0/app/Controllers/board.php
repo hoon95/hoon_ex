@@ -68,10 +68,18 @@ class Board extends BaseController
             'content' => $this->request->getVar('content'),
             'regdate' => $myTime -> toDateTimeString()
         ];
-        $boardModel ->insert($data);
+        
+        $bid = $this->request->getVar('bid');
+
+        if($bid){
+            $boardModel ->update($bid, $data);
+            return $this->response ->redirect(site_url('/boardview/'.$bid)); //쿼리성공후 board 페이지로 이동
+        }else{
+            $boardModel ->insert($data);
+            return $this->response ->redirect(site_url('/board')); //쿼리성공후 board 페이지로 이동
+        }
 
 
-        return $this->response ->redirect(site_url('/board')); //쿼리성공후 board 페이지로 이동
     }
     public function modify($bid = null){
         // 레거시 문법
