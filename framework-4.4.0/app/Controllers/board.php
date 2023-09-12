@@ -45,7 +45,16 @@ class Board extends BaseController
 
         // 모델 문법
         $boardModel = new BoardModel();     // 레거시 문법의 $db, $result 실행 결과와 동일
-        $data['view'] = $boardModel -> where('bid', $bid) -> first();
+        // $data['view'] = $boardModel -> where('bid', $bid) -> first();
+        
+        $fileModel = new FileModel();
+        // $data['file_view'] = $fileModel -> where('type', 'board') -> where('bid', $bid) -> first();
+
+        $data['view'] = $boardModel -> select('board.*, file_table.filename')
+                                    -> join('file_table', 'file_table.bid = board.bid', 'left')
+                                    -> where('file_table.type', 'board')
+                                    -> where('board.bid', $bid)
+                                    -> first();
 
         return render('board_view', $data);
     }
@@ -80,8 +89,8 @@ class Board extends BaseController
 
         if($file->getName()){
             $filename = $file->getName();
-            $newFile = $file->getRandomeName();
-            $filepath = $file->store('board/', $newName);
+            $newFile = $file->getRandomName();
+            $filepath = $file->store('board/', $newFile);
         }
 
         if($bid){       // 수정
@@ -89,8 +98,15 @@ class Board extends BaseController
             return $this->response ->redirect(site_url('/boardview/'.$bid)); //쿼리성공후 board 페이지로 이동
         }else{          // 신규 글 등록
             $boardModel ->insert($data);
+            $insertid = $db->insertID();        // board 테이블에 글 등록 시 생기는 고유 id 생성
+            $fileData = [
+                'bid' => $insertid,
+                'userid' => $_SESSION['userid'],
+                'filename' => $filepath,
+                'type' => 'board'
+            ];
 
-            $FileModel -> insert($fileData);
+            $fileModel -> insert($fileData);
             return $this->response ->redirect(site_url('/board')); //쿼리성공후 board 페이지로 이동
         }
 
