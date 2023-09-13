@@ -282,3 +282,105 @@ INFO - 2023-09-13 02:36:39 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2023-09-13 02:36:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-09-13 02:36:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-09-13 02:36:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-13 03:01:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-13 03:01:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-09-13 03:01:54 --> Call to undefined function App\Controllers\getVar()
+in APPPATH\Controllers\board.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->list()
+ 2 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+INFO - 2023-09-13 03:02:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-09-13 03:02:50 --> Call to undefined function App\Controllers\getVar()
+in APPPATH\Controllers\board.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->list()
+ 2 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+INFO - 2023-09-13 03:08:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-09-13 03:08:22 --> Call to undefined function App\Controllers\getVar()
+in APPPATH\Controllers\board.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->list()
+ 2 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+INFO - 2023-09-13 03:11:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-09-13 03:11:08 --> Call to undefined function App\Controllers\getVar()
+in APPPATH\Controllers\board.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->list()
+ 2 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+INFO - 2023-09-13 03:11:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-09-13 03:11:16 --> Call to undefined function App\Controllers\getVar()
+in APPPATH\Controllers\board.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->list()
+ 2 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+INFO - 2023-09-13 03:11:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-09-13 03:11:40 --> Call to undefined function App\Controllers\getVar()
+in APPPATH\Controllers\board.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->list()
+ 2 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+INFO - 2023-09-13 03:18:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-09-13 03:18:40 --> Call to undefined function App\Controllers\getVar()
+in APPPATH\Controllers\board.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->list()
+ 2 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+INFO - 2023-09-13 03:20:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-09-13 03:20:28 --> Undefined variable $List
+in APPPATH\Controllers\board.php on line 35.
+ 1 APPPATH\Controllers\board.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $List', 'C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\app\\Controllers\\board.php', 35)
+ 2 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->list()
+ 3 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+INFO - 2023-09-13 03:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-09-13 03:20:30 --> Undefined variable $List
+in APPPATH\Controllers\board.php on line 35.
+ 1 APPPATH\Controllers\board.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $List', 'C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\app\\Controllers\\board.php', 35)
+ 2 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->list()
+ 3 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+INFO - 2023-09-13 03:20:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-09-13 03:20:36 --> Undefined variable $page_links
+in APPPATH\Views\board_list.php on line 30.
+ 1 APPPATH\Views\board_list.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $page_links', 'C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\app\\Views\\board_list.php', 30)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\app\\Views\\board_list.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('board_list', [], true)
+ 5 APPPATH\Helpers\render_helper.php(10): view('board_list', [...], [])
+ 6 APPPATH\Controllers\board.php(38): render('board_list', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->list()
+ 8 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\gitbasic\\hoon_ex\\framework-4.4.0\\public\\index.php')
+INFO - 2023-09-13 03:21:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-13 03:21:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-13 03:21:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-13 03:21:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-13 03:21:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-13 03:21:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-13 03:21:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-13 03:24:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-13 03:24:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-13 03:24:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-13 03:24:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-13 03:24:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-13 03:24:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

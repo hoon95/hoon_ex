@@ -25,3 +25,7 @@
     <?php } ?>
   </tbody>
 </table>
+
+<div class="pager-links">
+  <?= $pager_links ?>
+</div>

@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\BoardModel; //사용할 모델을 로드
 use App\Models\FileModel; //사용할 모델을 로드
 use CodeIgniter\I18n\Time;
+use CodeIgniter\Pager\Pager;
 
 class Board extends BaseController
 {
@@ -15,7 +16,24 @@ class Board extends BaseController
         // $result = $db -> query($sql);
         // $data['list'] = $result->getResult(); //fetch_object 글 결과 배열에 담기
         $boardModel = new BoardModel();
-        $data['list'] = $boardModel -> orderBy('bid', 'desc')->findAll();
+        $page = $this -> request -> getVar('page') ?? 1;
+        $perPage = 3;
+        $startLimit = ($page-1) * $perPage;
+
+        $list = $boardModel -> select('*') -> where('1=1') -> orderBy('bid', 'desc') -> limit($perPage, $startLimit)  -> findAll($perPage, $startLimit);
+
+        $total = $boardModel -> countAllResults();
+
+        $pager = service('pager');
+        $pager_links = $pager->makeLinks($page, $perPage, $total, 'default_full');
+
+        $data = [
+            'total' => $total,
+            'page' => $page,
+            'perPage' => $perPage,
+            'pager_links' => $pager_links,
+            'list' => $list
+        ];
 
         return render('board_list' ,$data);
     }
