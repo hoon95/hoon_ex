@@ -14,8 +14,8 @@
       <textarea class="form-control" name="content" id="content" rows="3"><?= isset($view->content)? $view->content:''; ?></textarea>
     </div>
     <div class="mb-3">
-      <label for="file" class="form-label">파일</label>
-      <input type="file" class="form-control" name="upfile" id="file">
+      <label for="file" class="form-label">첨부파일</label>
+      <input type="file" class="form-control" name="upfile[]" id="file" multiple>
     </div>
     <?php
     $btntitle = isset($view->subject)? '수정':'등록';
