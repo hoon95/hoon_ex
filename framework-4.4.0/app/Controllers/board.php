@@ -172,6 +172,40 @@ class Board extends BaseController
             return redirect()->to('/board')->with('alert','본인글만 삭제할 수 있습니다.');  
         }
 
-    }   
+    }
+    public function save_image(){
+        // 파일 정보 파악
+        $fileModel = new FileModel();
+        $db = db_connect();
+        $file = $this->request->getFile('savefile');
 
+        // 파일명 랜덤 생성 및 이동(store)
+        if($file->getName()){
+            $filename=$file->getName();
+            $newName = $file ->getRandomName();
+            $filepath = $file->store('board/', $newName);
+        }
+
+        // file_table에서는 bid를 받을 방법이 없음(fid : 12,13,14 / bid : 0,0,0)
+        // save 함수 실행(글 등록)시 fid에 해당하는 bid 매칭됨
+        $fileData=[
+            'bid' => '',
+            'userid' => $_SESSION['userid'],
+            'filename' => $filepath,
+            'type' => 'board'
+        ];
+
+        $fileModel = insert($fileData);
+        $insertid = $db->insertID();        // id를 생성하는 것이 아닌 이미 만들어진 id를 조회하는 것
+
+        $return_data = array(
+            'result' => 'success',
+            'fid' => $insertid,
+            'savename' => $filepath
+        );
+
+        return json_encode($return_data);
+        // 기존 : 파일 자체에 실행(레거시)
+        // 변경 : 주소로 넘긴 값을 컨트롤러 함수로 실행 후 return
+    }
 }
