@@ -1,0 +1,13 @@
+{
+  "name": "tw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tailwindcss-cli@latest build -i ./src/input.css -o ./public/tailwin.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
