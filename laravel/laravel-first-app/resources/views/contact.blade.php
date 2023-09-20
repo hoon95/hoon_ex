@@ -1,13 +1,14 @@
 @extends('layout')
-@section('title' ,'Contact Us')
+
+@section('title','Contact')
 
 @section('content')
-<div class="flex justify-center">
-    <h1>Contact Us</h1>
-</div>
-<div class="mt-8 dark:bg-gray-800 shadow">
+  <div class="flex justify-center">
+    <h1>Contact</h1>
+  </div>
+  <div class="mt-8 dark:bg-gray-800 shadow">
     <p>
-        This is Contact Page
+      This is the Contact page.
     </p>
-</div>
-@endsection
+  </div>
+@endsection    
