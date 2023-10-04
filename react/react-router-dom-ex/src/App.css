@@ -1,0 +1,17 @@
+body, div{
+  padding: 20px;
+}
+div{
+  border: 1px solid #000;
+}
+.main-menu{
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+}
+.main-menu a{
+  text-decoration: none;
+}
+.main-menu a.active{
+  text-decoration: underline;
+}
