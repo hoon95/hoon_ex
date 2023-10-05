@@ -1,29 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import './App.css';
 
 class Nav extends Component{
-  /*
-  state = {
-    list: []
-  }
-  componentDidMount(){
-    console.log('componentDidMount 실행')
-    fetch('./data/list.json')
-      .then(result=>{
-        console.log(result);
-        return result.json();
-      })
-      .then(data=>{
-        console.log(data);
-        this.setState({
-          list: data
-        })
-      })
-  }
-  */
   render(){
-    console.log('Nav 컴포넌트 실행');
-    // let listHTML = this.state.list.map(list=>{
     let listHTML = this.props.list.map(list=>{
       return(
         <li key={list.id}>
@@ -44,63 +23,101 @@ class Nav extends Component{
   }
 }
 
-class Article extends Component{
-  render(){
+function Article(props){
     return(
       <article>
-        <h2>{this.props.name}</h2>
-        <p>{this.props.email}</p>
+        <h2>{props.name}</h2>
+        <p>{props.email}</p>
       </article>
     )
-  }
 }
 
-class App extends Component{
-  state = {
-    article: {
-      name: 'Select Your Name',
-      email: 'This is email'
-    },
-    list: []
-  }
+function App(){
+  const [article, setArticle] = useState({
+    name: 'Select Your Name',
+    email: 'email'
+  });
+  const [list, setList] = useState([]);
 
-  componentDidMount(){
+  useEffect(()=>{
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(result=>{
         return result.json();
       })
       .then(data=>{
-        this.setState({
-          list: data
-        })
+        setList(data)
       })
-  }
+  }, [])
 
-  render(){
-    return (
-      <div className="App">
-        <h1>Web</h1>
-        <Nav list={this.state.list} onclick={id=>{
-          fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-          .then(result=>{
-            return result.json();
+  return (
+    <div className="App">
+      <h1>Web</h1>
+      <Nav list={list} onclick={id=>{
+        fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then(result=>{
+          return result.json();
+        })
+        .then(data=>{
+          setArticle({
+            name: data.name,
+            email: data.email
           })
-          .then(data=>{
-            this.setState({
-              article: {
-                name: data.name,
-                email: data.email
-              }
-            })
-          })
-        }}/>
-        <Article
-          name={this.state.article.name}
-          email={this.state.article.email}
-        />
-      </div>
-    );
-  }
+        })
+      }}/>
+      <Article
+        name={article.name}
+        email={article.email}
+      />
+    </div>
+  );
 }
+
+// class App extends Component{
+//   state = {
+//     article: {
+//       name: 'Select Your Name',
+//       email: 'This is email'
+//     },
+//     list: []
+//   }
+
+//   componentDidMount(){
+//     fetch('https://jsonplaceholder.typicode.com/users')
+//       .then(result=>{
+//         return result.json();
+//       })
+//       .then(data=>{
+//         this.setState({
+//           list: data
+//         })
+//       })
+//   }
+
+//   render(){
+//     return (
+//       <div className="App">
+//         <h1>Web</h1>
+//         <Nav list={this.state.list} onclick={id=>{
+//           fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+//           .then(result=>{
+//             return result.json();
+//           })
+//           .then(data=>{
+//             this.setState({
+//               article: {
+//                 name: data.name,
+//                 email: data.email
+//               }
+//             })
+//           })
+//         }}/>
+//         <Article
+//           name={this.state.article.name}
+//           email={this.state.article.email}
+//         />
+//       </div>
+//     );
+//   }
+// }
 
 export default App;
