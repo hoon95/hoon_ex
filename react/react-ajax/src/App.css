@@ -1,0 +1,10 @@
+body{
+  padding: 20px;
+}
+li{
+  list-style-type: none;
+}
+a{
+  color: midnightblue;
+  text-decoration: none;
+}
