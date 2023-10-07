@@ -11,7 +11,7 @@ const port = process.env.port || 8000;
 const mysql = require('mysql');
 ```
 
-1. **Express 앱 설정**
+2. **Express 앱 설정**
 - JSON 및 URL-encoded 형식의 데이터 파싱을 위한 미들웨어 설정
 - CORS를 활성화하여 서버가 다른 도메인에서 오는 요청을 수락하도록 함
 
@@ -26,7 +26,7 @@ let corsOptions = {
 app.use(cors(corsOptions));
 ```
 
-1. **MySQL 연결 설정**
+3. **MySQL 연결 설정**
 
 ```jsx
 const db = mysql.createConnection({
@@ -39,7 +39,7 @@ const db = mysql.createConnection({
 db.connect();
 ```
 
-1. **라우팅 및 데이터베이스 쿼리**
+4. **라우팅 및 데이터베이스 쿼리**
 - 루트 엔드포인트(`/`)에 대한 GET 요청을 처리하고, 데이터베이스에 새로운 레코드를 삽입
 - `/list` 엔드포인트에 대한 GET 요청을 처리하고, `board` 테이블에서 데이터를 가져옴
 - `/insert` 엔드포인트에 대한 POST 요청을 처리하고, 클라이언트에서 전달된 데이터를 `board` 테이블에 삽입
@@ -72,7 +72,7 @@ app.post('/insert', (req, res) => {
 
 ```
 
-1. **서버 시작:**
+5. **서버 시작:**
 - Express 애플리케이션을 지정된 포트에서 시작
 
 ```jsx
