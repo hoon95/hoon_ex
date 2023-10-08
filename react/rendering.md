@@ -8,8 +8,6 @@
 
 </aside>
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/71038378-9840-4fca-a3e2-589b51c4bfb7/81780799-4f80-4d51-bc32-8c8f77d9f95c/Untitled.png)
-
 1. 클라이언트가 서버에 페이지를 요청
 2. 기본 HTML, CSS, JavaScript 파일을 클라이언트에 반환
 3. 브라우저에서 기본 레이아웃 생성 및 표시
@@ -39,8 +37,6 @@
 💡 SSR(Server Side Rendering) : 렌더링이 서버 쪽에서 일어남
 
 </aside>
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/71038378-9840-4fca-a3e2-589b51c4bfb7/78805f4d-c943-4760-9c09-c7f960cced10/Untitled.png)
 
 1. 클라이언트가 서버에 페이지를 요청
 2. 서버에서 페이지를 렌더링
