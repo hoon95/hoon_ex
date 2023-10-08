@@ -43,11 +43,11 @@
 
 1. **단일 책임 원칙 (Single Responsibility Principle, SRP)**
 - 클래스는 하나의 책임만 가져야 함. 이는 클래스를 변경해야 하는 이유를 최소화하고, 코드의 재사용성을 증가시킴
-1. **개방-폐쇄 원칙 (Open/Closed Principle, OCP)**
+2. **개방-폐쇄 원칙 (Open/Closed Principle, OCP)**
 - 소프트웨어의 구성 요소(클래스, 모듈, 함수 등)는 확장에는 열려 있어야 하고, 수정에는 닫혀 있어야 함
-1. **리스코프 치환 원칙 (Liskov Substitution Principle, LSP)**
+3. **리스코프 치환 원칙 (Liskov Substitution Principle, LSP)**
 - 어떤 기능에서 하위 타입의 객체를 사용해도 부모 타입의 객체를 사용하는 것과 동일하게 동작해야 함
-1. **인터페이스 분리 원칙 (Interface Segregation Principle, ISP)**
+4. **인터페이스 분리 원칙 (Interface Segregation Principle, ISP)**
 - 클라이언트는 자신이 사용하지 않는 메서드에 의존 관계를 맺으면 안 됨. 즉, 하나의 큰 인터페이스보다는 여러 개의 작은 인터페이스가 바람직
-1. **의존 역전 원칙 (Dependency Inversion Principle, DIP)**
+5. **의존 역전 원칙 (Dependency Inversion Principle, DIP)**
 - 고수준 모듈은 저수준 모듈에 의존해서는 안 되며, 둘 모두 추상화에 의존해야 함
