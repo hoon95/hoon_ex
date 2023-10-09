@@ -168,3 +168,83 @@ class BoardList extends Component {
 
 export default BoardList;
 ```
+
+
+### `Write.js`
+
+### 상태(State) 정의
+
+- `isModifyMode`: 글 작성 모드와 글 수정 모드를 구분하기 위한 상태
+- `title`: 글 제목을 저장하는 상태
+- `content`: 글 내용을 저장하는 상태
+
+```jsx
+state = {
+  isModifyMode: false,
+  title: '',
+  content: ''
+}
+```
+
+### `write` 메소드
+
+- 글을 작성하는 메소드로, Axios를 사용하여 서버에 POST 요청
+- 서버에 `title`과 `content`를 전송
+
+```jsx
+write = () => {
+  Axios.post('<http://localhost:8000/insert>', {
+    title: this.state.title,
+    content: this.state.content
+  })
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}
+```
+
+### `update` 메소드
+
+- 글을 수정하는 메소드로, Axios를 사용하여 서버에 POST 요청
+- 서버에 `title`, `content`, 그리고 현재 선택된 게시물의 `id`를 전송
+
+```jsx
+update = () => {
+  Axios.post('<http://localhost:8000/update>', {
+    title: this.state.title,
+    content: this.state.content,
+    id: this.props.boardId // props로 전달받은 boardId를 사용
+  })
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}
+```
+
+### `handleChange` 메소드
+
+- 입력 폼 값이 변경될 때 호출되는 메소드로, 해당 입력 필드의 이름에 따라 상태를 업데이트
+
+```jsx
+handleChange = (e) => {
+  this.setState({
+    [e.target.name]: e.target.value
+  });
+}
+```
+
+### 렌더링
+
+- 글 제목과 내용을 입력받는 Form 컴포넌트를 렌더링
+- `isModifyMode`에 따라 버튼의 동작이 다르게 설정됨
+
+```jsx
+<Button variant="info" onClick={this.state.isModifyMode ? this.update : this.write}>작성완료</Button>
+<Button variant="secondary">취소</Button>
+```
