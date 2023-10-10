@@ -4,31 +4,35 @@ import './App.css';
 import BoardList from './BoardList';
 import Write from './Write';
 
-class App extends Component{
+class App extends Component {
   state = {
-    isModifyMode : false,
-    isCompleted:true,
-    boardId:0
+    isModifyMode: false,
+    isCompleted: true,
+    boardId: 0
   }
-  handleModify = (checkList)=>{
-    if(checkList.length === 0){
+  handleModify = (checkList) => {
+    if (checkList.length === 0) {
       alert('수정할 게시물을 선택하세요');
-    } else if(checkList.length > 1){
+    } else if (checkList.length > 1) {
       alert('하나의 게시물만 선택하세요');
     }
     this.setState({
-      isModifyMode: checkList.length === 1
-    })
-    this.setState({
-      boardId:checkList.length[0]
+      isModifyMode: checkList.length === 1,
+      boardId: checkList[0]
     })
   }
+  handleCancel = () => {
 
-  render(){
-    return(
+  }
+
+  render() {
+    return (
       <div className="container">
         <BoardList handleModify={this.handleModify} />
-        <Write/>
+        <Write isModifyMode={this.state.isModifyMode}
+          boardId={this.state.boardId}
+          handleCancel={this.handleCancel}
+        />
       </div>
     )
   }
