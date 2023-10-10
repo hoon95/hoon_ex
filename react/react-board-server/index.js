@@ -40,16 +40,15 @@ app.get('/list', (req, res) => {
   });
 });
 app.get('/detail', (req, res) => {
+  //res.send('Hello World!');
   const id = req.query.id;
   const sqlQuery = "SELECT BOARD_ID, BOARD_TITLE, BOARD_CONTENT, REGISTER_ID, DATE_FORMAT(REGISTER_DATE, '%Y-%m-%d') AS REGISTER_DATE  FROM board WHERE BOARD_ID=?";
-  db.query(sqlQuery, [id], function (err, result) {
+  db.query(sqlQuery, [id], (err, result) => {
     if (err) throw err;
     res.send(result);
     console.log(result);
   });
-})
-
-
+});
 app.post('/insert', (req, res) => {
   // const title = req.body.title;
   // const content = req.body.content;
@@ -58,7 +57,27 @@ app.post('/insert', (req, res) => {
 
   const sqlQuery = "INSERT INTO board (BOARD_TITLE, BOARD_CONTENT, REGISTER_ID) values (?, ?,'admin')";
 
+  db.query(sqlQuery, [title, content], function (err, result) {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+app.post('/update', (req, res) => {
+  const { title, content, id } = req.body;
+  const sqlQuery = `UPDATE BOARD SET BOARD_TITLE = ?, BOARD_CONTENT=? where BOARD_ID=${id}`;
+
   db.query(sqlQuery, [title, content], (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+app.post('/delete', (req, res) => {
+  const id = req.body.boardIdList;
+  console.log(id);
+
+  const sqlQuery = `delete from board where BOARD_ID in (${id})`;
+
+  db.query(sqlQuery, (err, result) => {
     if (err) throw err;
     res.send(result);
   });
@@ -67,16 +86,5 @@ app.post('/insert', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
-
-// app.post('/update', (req, res) => {
-//   const { title, content, id } = req.body;
-
-//   const sqlQuery = `UPDATE board SET BOARD_TITLE=?, BOARD_CONTENT=? WHERE BOARD_ID=${id}`;
-
-//   db.query(sqlQuery, [title, content], (err, result) => {
-//     if (err) throw err;
-//     res.send(result);
-//   });
-// });
 
 // db.end();

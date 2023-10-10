@@ -7,7 +7,7 @@ import Write from './Write';
 class App extends Component {
   state = {
     isModifyMode: false,
-    isCompleted: false,
+    isCompleted: true,
     boardId: 0
   }
   handleModify = (checkList) => {
@@ -20,22 +20,36 @@ class App extends Component {
       isModifyMode: checkList.length === 1,
       boardId: checkList[0]
     })
+
   }
   handleCancel = () => {
-
+    this.setState({
+      isModifyMode: false,
+      isCompleted: false,
+      boardId: 0
+    })
   }
   renderComplete = () => {
-
+    //목록 출력 완료하면
+    this.setState({
+      isCompleted: true
+    })
   }
 
   render() {
+
+    console.log('boardid' + this.state.boardId);
+    console.log(this.state.isModifyMode);
+    console.log(this.state.isCompleted);
     return (
       <div className="container">
-        <BoardList handleModify={this.handleModify}
+        <BoardList
+          handleModify={this.handleModify}
           renderComplete={this.renderComplete}
-          isComplete={this.isComplete}
+          isCompleted={this.state.isCompleted}
         />
-        <Write isModifyMode={this.state.isModifyMode}
+        <Write
+          isModifyMode={this.state.isModifyMode}
           boardId={this.state.boardId}
           handleCancel={this.handleCancel}
         />

@@ -10,8 +10,9 @@ class Board extends Component {
 
       <tr>
         <td>
-          <input type="checkbox" value={this.props.id} onChange={e =>
+          <input type="checkbox" value={this.props.id} onChange={(e) => {
             this.props.onCheckboxChange(e.target.checked, e.target.value)
+          }
           } />
         </td>
         <td>{this.props.id}</td>
@@ -37,26 +38,51 @@ class BoardList extends Component {
         this.setState({
           boardList: data
         })
-        this.props.renderComplete();    // App.js에 목록 출력 완료를 알려준다
+        this.props.renderComplete();//App.js에 목록 출력 완료 알려준다.
+
       })
       .catch((error) => {
         // 에러 핸들링
         console.log(error);
       });
   }
+  handleDelete = () => {
+    if (this.state.checkList.length === 0) {
+      alert('삭세할 게시글을 선택하세요');
+      return;
+    }
+    let boardIdList = '';
+    this.state.checkList.forEach(item => {
+      boardIdList += `'${item}',`;
+    });
+    console.log(boardIdList);
+    boardIdList = boardIdList.substring(0, boardIdList.length - 1);
+    console.log(boardIdList);
+
+    Axios.post('http://localhost:8000/delete', {
+      boardIdList: boardIdList
+    })
+      .then(() => {
+        this.getList();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   componentDidMount() {
     this.getList();
+
   }
+
   componentDidUpdate() {
-    if (!this.props.isComplete) {
+    if (!this.props.isCompleted) {
       this.getList();
     }
   }
-
   onCheckboxChange = (checked, id) => {
     const list = this.state.checkList.filter(v => {
-      return v != id;   // id와 일치하지 않는 값만 return
-    });
+      return v != id;
+    })
     if (checked) {
       list.push(id);
     }
@@ -107,7 +133,7 @@ class BoardList extends Component {
             }}
 
           >수정</Button>
-          <Button variant="danger">삭제</Button>
+          <Button variant="danger" onClick={this.handleDelete}>삭제</Button>
         </div>
       </>
     )
