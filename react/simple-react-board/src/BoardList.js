@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Axios from "axios";
+import { Link } from 'react-router-dom';
 
 
 class Board extends Component {
@@ -125,7 +126,9 @@ class BoardList extends Component {
           </tbody>
         </Table>
         <div className='d-flex gap-3'>
-          <Button variant="info">글쓰기</Button>
+          <Link to='/write'>
+            <Button variant="info">글쓰기</Button>
+          </Link>
           <Button
             variant="secondary"
             onClick={() => {

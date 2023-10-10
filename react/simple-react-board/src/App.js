@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import BoardList from './BoardList';
 import Write from './Write';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 class App extends Component {
   state = {
@@ -37,22 +38,28 @@ class App extends Component {
   }
 
   render() {
-
-    console.log('boardid' + this.state.boardId);
-    console.log(this.state.isModifyMode);
-    console.log(this.state.isCompleted);
     return (
       <div className="container">
-        <BoardList
-          handleModify={this.handleModify}
-          renderComplete={this.renderComplete}
-          isCompleted={this.state.isCompleted}
-        />
-        <Write
-          isModifyMode={this.state.isModifyMode}
-          boardId={this.state.boardId}
-          handleCancel={this.handleCancel}
-        />
+        <h1>React BBS</h1>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={
+              <BoardList
+                handleModify={this.handleModify}
+                renderComplete={this.renderComplete}
+                isCompleted={this.state.isCompleted}
+              />} >
+            </Route>
+            <Route path="/write" element={
+              <Write
+                isModifyMode={this.state.isModifyMode}
+                boardId={this.state.boardId}
+                handleCancel={this.handleCancel}
+              />
+            }>
+            </Route>
+          </Routes>
+        </BrowserRouter>
       </div>
     )
   }
