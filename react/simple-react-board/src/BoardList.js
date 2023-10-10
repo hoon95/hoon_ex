@@ -37,7 +37,7 @@ class BoardList extends Component {
         this.setState({
           boardList: data
         })
-        console.log(result);
+        this.props.renderComplete();    // App.js에 목록 출력 완료를 알려준다
       })
       .catch((error) => {
         // 에러 핸들링
@@ -46,8 +46,13 @@ class BoardList extends Component {
   }
   componentDidMount() {
     this.getList();
-
   }
+  componentDidUpdate() {
+    if (!this.props.isComplete) {
+      this.getList();
+    }
+  }
+
   onCheckboxChange = (checked, id) => {
     const list = this.state.checkList.filter(v => {
       return v != id;   // id와 일치하지 않는 값만 return

@@ -6,7 +6,6 @@ import Axios from "axios";
 class Write extends Component {
   state = {
     isModifyMode: false,
-    // boardId: 0,
     title: '',
     content: ''
   }
@@ -64,7 +63,8 @@ class Write extends Component {
         if (result.data.length > 0) {
           this.setState({
             title: result.data[0].BOARD_TITLE,
-            content: result.data[0].BOARD_CONTENT
+            content: result.data[0].BOARD_CONTENT,
+            isModifyMode: true
           });
         }
       })
@@ -100,7 +100,7 @@ class Write extends Component {
         </Form>
         <div className='d-flex gap-3'>
           <Button variant="info" onClick={this.state.isModifyMode ? this.update : this.write}>작성완료</Button>
-          <Button variant="secondary">취소</Button>
+          <Button variant="secondary" onClick={this.props.handleCancel}>취소</Button>
         </div>
       </>
     )

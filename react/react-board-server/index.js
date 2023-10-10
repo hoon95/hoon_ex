@@ -58,7 +58,7 @@ app.post('/insert', (req, res) => {
 
   const sqlQuery = "INSERT INTO board (BOARD_TITLE, BOARD_CONTENT, REGISTER_ID) values (?, ?,'admin')";
 
-  db.query(sqlQuery, [title, content], function (err, result) {
+  db.query(sqlQuery, [title, content], (err, result) => {
     if (err) throw err;
     res.send(result);
   });
@@ -67,5 +67,16 @@ app.post('/insert', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+// app.post('/update', (req, res) => {
+//   const { title, content, id } = req.body;
+
+//   const sqlQuery = `UPDATE board SET BOARD_TITLE=?, BOARD_CONTENT=? WHERE BOARD_ID=${id}`;
+
+//   db.query(sqlQuery, [title, content], (err, result) => {
+//     if (err) throw err;
+//     res.send(result);
+//   });
+// });
 
 // db.end();

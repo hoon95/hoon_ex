@@ -7,7 +7,7 @@ import Write from './Write';
 class App extends Component {
   state = {
     isModifyMode: false,
-    isCompleted: true,
+    isCompleted: false,
     boardId: 0
   }
   handleModify = (checkList) => {
@@ -24,11 +24,17 @@ class App extends Component {
   handleCancel = () => {
 
   }
+  renderComplete = () => {
+
+  }
 
   render() {
     return (
       <div className="container">
-        <BoardList handleModify={this.handleModify} />
+        <BoardList handleModify={this.handleModify}
+          renderComplete={this.renderComplete}
+          isComplete={this.isComplete}
+        />
         <Write isModifyMode={this.state.isModifyMode}
           boardId={this.state.boardId}
           handleCancel={this.handleCancel}
