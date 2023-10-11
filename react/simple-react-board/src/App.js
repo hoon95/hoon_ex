@@ -1,68 +1,74 @@
-import React, { Component } from 'react';
+import React,{useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import BoardList from './BoardList';
 import Write from './Write';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import View from './View';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
 
-class App extends Component {
-  state = {
-    isModifyMode: false,
-    isCompleted: true,
-    boardId: 0
-  }
-  handleModify = (checkList) => {
-    if (checkList.length === 0) {
+function App(){
+  const [isModifyMode, setIsModifyMode] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [boardId, setBoardId] = useState(0);
+
+  let  handleModify = (checkList)=>{    
+    console.log(checkList);
+    if(checkList.length === 0){
       alert('수정할 게시물을 선택하세요');
-    } else if (checkList.length > 1) {
+    } else if(checkList.length > 1){
       alert('하나의 게시물만 선택하세요');
     }
-    this.setState({
-      isModifyMode: checkList.length === 1,
-      boardId: checkList[0]
-    })
+    setIsModifyMode(checkList.length === 1);
+    setBoardId(checkList[0] || 0); 
+  }
 
+  let handleCancel = ()=>{
+    setIsModifyMode(false);
+    setIsCompleted(false);
+    setBoardId(0);   
   }
-  handleCancel = () => {
-    this.setState({
-      isModifyMode: false,
-      isCompleted: false,
-      boardId: 0
-    })
-  }
-  renderComplete = () => {
+  let renderComplete = () => {
     //목록 출력 완료하면
-    this.setState({
-      isCompleted: true
-    })
+    setIsCompleted(true);   
   }
 
-  render() {
-    return (
-      <div className="container">
-        <h1>React BBS</h1>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={
-              <BoardList
-                handleModify={this.handleModify}
-                renderComplete={this.renderComplete}
-                isCompleted={this.state.isCompleted}
-              />} >
-            </Route>
-            <Route path="/write" element={
-              <Write
-                isModifyMode={this.state.isModifyMode}
-                boardId={this.state.boardId}
-                handleCancel={this.handleCancel}
+  return(
+    <div className="container">
+      <h1>React BBS</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <BoardList 
+                handleModify={handleModify} 
+                renderComplete={renderComplete}
+                isCompleted = {isCompleted}
               />
-            }>
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </div>
-    )
-  }
+            }
+          ></Route>
+          <Route
+            path="/write"
+            element={
+              <Write 
+                isModifyMode={isModifyMode}
+                boardId={boardId}
+                handleCancel={handleCancel}
+              />
+            }
+          ></Route>
+
+          <Route
+            path="/view"
+            element={
+              <View/>
+            }
+          ></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  )
+
 }
 
 export default App;
