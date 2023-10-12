@@ -1,10 +1,15 @@
 import React from "react";
 
-const Post = ({ postObj }) => (
+const Post = ({ postObj, userConfirm }) => (
   <li>
     <h4>{postObj.post}</h4>
-    <button>Edit</button>
-    <button>Delete</button>
+    {userConfirm && (
+      <>
+        <button>Edit</button>
+        <button>Delete</button>
+      </>
+    )
+    }
   </li>
 )
 

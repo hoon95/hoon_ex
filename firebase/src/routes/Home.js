@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { collection, addDoc, doc, serverTimestamp, onSnapshot, query, orderBy } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from "firebase/firestore";
 import Post from '../components/Post';
 
 const Home = (userObj) => {
@@ -71,7 +71,7 @@ const Home = (userObj) => {
         {
           posts.map(item =>
             // <li key={item.id}>{item.post}</li>
-            <Post key={item.id} postObj={item}></Post>
+            <Post key={item.id} postObj={item} userConfirm={item.uid === userObj.userObj}></Post>
           )
         }
       </ul>
