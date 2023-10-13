@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { db } from "../firebase";
 import { doc, updateDoc, deleteDoc } from "firebase/firestore";
+import { getStorage, ref, deleteObject } from "firebase/storage";
 
 const Post = ({ postObj, userConfirm }) => {
   const [edit, setEdit] = useState(false);
@@ -27,6 +28,9 @@ const Post = ({ postObj, userConfirm }) => {
   const deletePost = async () => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
       await deleteDoc(doc(db, "posts", postObj.id));
+      const storage = getStorage();
+      const storageRef = ref(storage, postObj.attachURL);
+      deleteObject(storageRef);
     }
   }
 
@@ -44,6 +48,7 @@ const Post = ({ postObj, userConfirm }) => {
         : (
           <>
             <h4>{postObj.post}</h4>
+            {postObj.attachmentUrl && <img src={postObj.attachmentUrl} alt="" width="200"></img>}
             {
               userConfirm && (
                 <>

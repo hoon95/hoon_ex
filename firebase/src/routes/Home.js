@@ -2,11 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
 import { collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from "firebase/firestore";
 import Post from '../components/Post';
+import { getStorage, ref, uploadString, getDownloadURL } from 'firebase/storage';
+import { v4 as uuidv4 } from 'uuid';
 
 const Home = (userObj) => {
   const [post, setPost] = useState('');
   const [posts, setPosts] = useState([]);
 
+  // 첨부파일 관리
+  const [attachment, setAttachment] = useState();
+  const [inputFile, setInputFile] = useState();
+
+  const [attachURL, setAttachURL] = useState();
 
   const onChange = (e) => {
     // const val = e.target.value;    // ES2012
@@ -15,40 +22,32 @@ const Home = (userObj) => {
   }
   const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const docRef = await addDoc(collection(db, "posts"), {
-        date: serverTimestamp(),
-        post: post,
-        uid: userObj.userObj
-      });
-      console.log("Document written with ID: ", docRef.id);
-    }
-    catch (error) {
-      console.log(error);
-    }
+    const storage = getStorage();
+    const storageRef = ref(storage, `${userObj.userObj}/${uuidv4()}`);
+
+    uploadString(storageRef, attachment, 'data_url')
+      .then(async (snapshot) => {
+
+        let attachURL = await getDownloadURL(storageRef);
+
+        try {
+          await addDoc(collection(db, "posts"), {
+            date: serverTimestamp(),
+            post: post,
+            uid: userObj.userObj,
+            attachURL
+          });
+          attachURL = '';
+        }
+        catch (error) {
+          console.log(error);
+        }
+      })
 
   }
-  // 1. 데이터 한 번 가져오기
-  // const getPosts = async () => {
-  //   const querySnapshot = await getDocs(collection(db, "posts"));
-  //   querySnapshot.forEach((doc) => {
-  //     const postObj = {
-  //       ...doc.data(),
-  //       id: doc.id
-  //     }
-  //     // console.log(doc.id, " => ", doc.data());
-  //     // console.log(postObj);
-  //     setPosts((prev) => [postObj, ...prev]);
-  //   });
-  // }
-
-  // const test = { title: 'title 1', content: 'content 1' };
-  // const testcopy = { ...test, title: 'title 2' };
-  // console.log(testcopy);
 
   useEffect(() => {
     // getPosts();
-    // 2. 컬렉션의 여러 문서에 리슨(실시간 업데이트)
     const q = query(collection(db, "posts"), orderBy('date'));
     onSnapshot(q, (querySnapshot) => {
 
@@ -61,10 +60,43 @@ const Home = (userObj) => {
     });
   }, [])
 
+  // 파일 첨부 시 할 일
+  const onFileChange = (e) => {
+    // console.log(e.target.files[0]);
+    const { target: { files } } = e;
+    const fileInfo = files[0];
+
+    const reader = new FileReader();
+    reader.onloadend = (e) => {
+      setAttachment(e.target.result);
+    }
+    reader.readAsDataURL(fileInfo);
+  }
+  // console.log(attachment)
+
+  // 첨부파일 지우기
+  const onFileClear = () => {
+    setAttachment(null);
+    document.querySelector('#attachment').value = null;
+  }
+
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <input type='text' value={post} placeholder='제목을 입력하세요' onChange={onChange}></input>
+        <p>
+          <label htmlFor="content"></label>
+          <input type='text' id="content" name="post" value={post} placeholder='제목을 입력하세요' onChange={onChange}></input>
+        </p>
+        <p>
+          <label htmlFor="attachment">첨부이미지</label>
+          <input type="file" onChange={onFileChange} id="attachment" accept="images/*" />
+          {attachment &&
+            <div>
+              <img src={attachment} alt="" width="200" height="200" />
+              <button type="button" onClick={onFileClear}>X</button>
+            </div>
+          }
+        </p>
         <input type='submit' value='작성완료'></input>
       </form>
       <ul>
