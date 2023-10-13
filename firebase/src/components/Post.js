@@ -29,7 +29,7 @@ const Post = ({ postObj, userConfirm }) => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
       await deleteDoc(doc(db, "posts", postObj.id));
       const storage = getStorage();
-      const storageRef = ref(storage, postObj.attachURL);
+      const storageRef = ref(storage, postObj.attachmentUrl);
       deleteObject(storageRef);
     }
   }

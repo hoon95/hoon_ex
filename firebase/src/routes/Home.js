@@ -8,12 +8,10 @@ import { v4 as uuidv4 } from 'uuid';
 const Home = (userObj) => {
   const [post, setPost] = useState('');
   const [posts, setPosts] = useState([]);
+  let attachmentUrl = '';
 
   // 첨부파일 관리
   const [attachment, setAttachment] = useState();
-  const [inputFile, setInputFile] = useState();
-
-  const [attachURL, setAttachURL] = useState();
 
   const onChange = (e) => {
     // const val = e.target.value;    // ES2012
@@ -25,25 +23,29 @@ const Home = (userObj) => {
     const storage = getStorage();
     const storageRef = ref(storage, `${userObj.userObj}/${uuidv4()}`);
 
-    uploadString(storageRef, attachment, 'data_url')
-      .then(async (snapshot) => {
-
-        let attachURL = await getDownloadURL(storageRef);
-
-        try {
-          await addDoc(collection(db, "posts"), {
-            date: serverTimestamp(),
-            post: post,
-            uid: userObj.userObj,
-            attachURL
-          });
-          attachURL = '';
-        }
-        catch (error) {
-          console.log(error);
-        }
-      })
-
+    const makePost = async (url) => {
+      try {
+        await addDoc(collection(db, "posts"), {
+          date: serverTimestamp(),
+          post: post,
+          uid: userObj.userObj,
+          attachmentUrl: url
+        });
+        attachmentUrl = '';
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }
+    if (attachment) {
+      uploadString(storageRef, attachment, 'data_url')
+        .then(async (snapshot) => {
+          attachmentUrl = await getDownloadURL(storageRef);
+          makePost(attachmentUrl);
+        })
+    } else {
+      makePost(attachmentUrl);
+    }
   }
 
   useEffect(() => {
