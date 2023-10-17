@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Logical Properties</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>CSS Logical Properties</h1>
+    <h2>Content Direction</h2>
+    <div class="direction ltr">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, nemo repellat atque eaque deserunt,
+            perferendis obcaecati voluptate ipsam tempora nobis debitis blanditiis quas nulla asperiores dolorem dicta
+            cumque sint animi?</p>
+    </div>
+    <div class="direction rtl">
+        <p>لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان هو النص الوهمي القياسي في الصناعة منذ
+            القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد صمد
+            ليس فقط لخمسة قرون ، ولكن أيضًا </p>
+    </div>
+    <h2>Writing-mode</h2>
+    <div class="hoz-tb">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+    </div>
+    <div class="ver-lr">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+    </div>
+    <div class="ver-rl">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+    </div>
+    <hr>
+    <h2>Text Alignment</h2>
+
+    <div class="align ltr">
+        <p>text align</p>
+    </div>
+    <div class="align rtl">
+        <p>نص شكلي يستخدم</p>
+    </div>
+
+    <hr>
+    <h2>Margin, Padding, and Border</h2>
+    <div class="cardwrapper">
+        <div class="ltr">
+            <h1>Left to right layout (LTR)</h1>
+            <div class="card">
+                <img src="https://source.unsplash.com/80x80/?portrait" alt="Portrait">
+                <div class="card__content">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. </p>
+                </div>
+            </div>
+        </div>
+        <div class="rtl">
+            <h1>Right to left layout (RTL)</h1>
+            <div class="card">
+                <img src="https://source.unsplash.com/80x80/?portrait" alt="Portrait">
+                <div class="card__content">
+                    <p>لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان هو النص </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h2>Width, Height</h2>
+    <div class="width_height">
+        <div class="ltr">
+            <h1>Left to right layout (LTR)</h1>
+            <div class="box">
+                This is a simple box
+            </div>
+        </div>
+        <div class="vertical">
+            <h1>Vertical layout</h1>
+            <div class="box">
+                这是一个简单的盒子
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h2>Position</h2>
+    <div class="position">
+        <div class="ltr">
+            <h1>Left to right layout (LTR)</h1>
+            <div class="navbar">
+                <p>Logo</p>
+
+                <i class="fas fa-ellipsis-v"></i>
+            </div>
+        </div>
+        <div class="rtl">
+            <h1>Right to left layout (RTL)</h1>
+            <div class="navbar">
+                <p>شعار</p>
+
+                <i class="fas fa-ellipsis-v"></i>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
