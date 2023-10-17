@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+/* 주의사항 : 섞어쓸 수 없음(layer로 할거면 다 해야 함) */
+/* body {
+    background: blue;
+} */
+
+/* @layer reset, layout, section; */
+@layer reset, section, layout;
+
+@import url(reset.css) layer(reset);
+
+@layer layout {
+    body {
+        background: #ccc;
+    }
+}
+
+@layer section {
+    body {
+        background: #333;
+        padding: 10px;
+    }
+
+    li {
+        line-height: 40px;
+        color: #00f;
+        font-weight: bold;
+    }
+
+    .no-section {
+        color: revert-layer
+    }
+}
+
+@layer reset {
+    body {
+        padding: 20px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
+/* 레이어 중첩 */
+/* @layer framework {
+    @layer section {
+        .nesting p {
+            color: green
+        }
+    }
+} */
+@layer framework.section {
+    .nesting p {
+        color: green
+    }
+}
+
+@media (max-width: 768px) {
+    @layer layout {
+        body {
+            background: #fff;
+        }
+    }
+}
