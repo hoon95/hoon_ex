@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+@maincolor: #444;
+@titlecolor: @maincolor - #222;
+@linkcolor: @maincolor + #222;
+@mainfontsize: 12px;
+@titlefontsize: @mainfontsize * 2;
+
+// Mixins
+.bordered {
+    border-top: dotted 1px black;
+    border-bottom: solid 2px black;
+}
+
+.rounded-corners(@radius: 5px) {
+    border-radius: @radius;
+    padding: 5px 10px;
+    background: #ccc;
+}
+
+// 
+
+
+// variable decalre
+body {
+    color: @maincolor;
+    font-size: @mainfontsize;
+}
+
+h1 {
+    color: @titlecolor;
+    font-size: @titlefontsize;
+    .rounded-corners; // Mixins function
+}
+
+nav h1 {
+    .rounded-corners(20px);
+}
+
+a {
+    color: @linkcolor;
+}
+
+//
+
+// Mixins
+nav a {
+    .bordered;
+    text-decoration: none;
+}
+
+#header {
+    color: black;
+
+    nav {
+        font-size: 20px;
+
+        ul li:last-child {
+            background: silver
+        }
+    }
+
+    h1 a {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+
+// Maps
+@base-url: 'http://www.abc.com/images/';
+
+body {
+    background-image: url('@{@base-url}bg.jpg');
+}
+
+//
