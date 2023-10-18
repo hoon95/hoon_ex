@@ -1,0 +1,22 @@
+$maincolor: #444;
+$titlecolor: #222;
+
+@mixin roundborder($border: 5px) {
+    border-radius: $border;
+    padding: 5px 10px;
+    border: 3px solid #ccc;
+}
+
+
+body {
+    color: $maincolor;
+}
+
+h1 {
+    color: $titlecolor;
+    @include roundborder;
+}
+
+nav h1 {
+    @include roundborder($border: 20px);
+}
