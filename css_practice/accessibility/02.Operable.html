@@ -7,12 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>운용의 용이성(Operable)</title>
     <style>
+        a{
+            outline:none;
+        }
+        a:focus{
+            background-color: #000;
+            color: #fff;
+        }
+        .skip_to_content{
+            background: #000;
+            color: #fff;
+            position: fixed;
+            left: 0;
+            top: 0;
+            transform:translateY(-100%);
+            padding: 10px 20px;
+            text-decoration: none;
+            transition:transform 0.3s;
+        }
+        /*
+        탭을 눌렀을 때, skip_to_content에 포커스가 걸리면 화면 나타난다.
+        */
+        .skip_to_content:focus{
+            transform:none;
+        }
+        #main_content > section{
+            display: none;
+        }
+        #main_content > section:target{
+            display: block;
+        }
 
     </style>
 </head>
 
 <body>
-    <a href="" class="skip_to_content">Skip to Content</a>
+    <a href="#main_content" class="skip_to_content">Skip to Content</a>
     <h1>운용의 용이성(Operable)</h1>
     <pre>
         2.1.1	(키보드 사용 보장) 모든 기능은 키보드만으로도 사용할 수 있어야 한다. (PC웹)
@@ -32,7 +62,7 @@
         <nav>
             <ul>
                 <li><a href="#content1">menu 1</a></li>
-                <li><a href="#content3">menu 2</a></li>
+                <li><a href="#content2">menu 2</a></li>
                 <li><a href="#content3">menu 3</a></li>
             </ul>
         </nav>
@@ -69,7 +99,22 @@
     <hr>
 
 
+    <script>
+        let tabMenu = document.querySelectorAll('nav ul a');
+        let tabContent = document.querySelectorAll('#main_content > section');
 
+        for(let tm of tabMenu){
+            tm.addEventListener('focusin',(e)=>{
+                let targetId = e.target.getAttribute('href');
+                console.log(targetId);
+
+                for(let tc of tabContent){
+                    tc.style.display = 'none';
+                }
+                document.querySelector(targetId).style.display = 'block';
+            });
+        }
+    </script>
 </body>
 
 </html>

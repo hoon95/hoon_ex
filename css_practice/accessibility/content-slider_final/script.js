@@ -74,3 +74,8 @@ navNext.addEventListener('click', function(event) {
 // 첫번째 슬라이드 먼저 보이도록 하기
 goToSlide(0);
 
+/*
+윈도우에 keydown 이벤트가 일어나면, 그 값이 왼쪽 화살표면, 오른쪽 화살표면 슬라이드 이동
+*/
+
+
