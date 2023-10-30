@@ -62,19 +62,40 @@
         </div>
         <!--  Side Nav  -->
         <div class="nav-side-menu">
-            <div class="menu-list">
+            <div class="menu-list" module="Layout_category">
+                <!--@js(/js/module/layout/category.js)-->
                 <h6>Categories</h6>
-                <div id="category" module="Layout_category">
-                    <!--@css(/css/module/layout/category.css)-->
-                    <!--@js(/js/module/layout/category.js)-->
-                    <div class="position">
-                        <ul>
-                            <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
-                            <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
-                            <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <ul id="menu-content" class="menu-content collapse out">
+                    <!-- Single Item -->
+                    <li 
+                        data-toggle="collapse" 
+                        data-target="#{$name_or_img_tag}" 
+                        class="collapsed"
+                        data-link="/product/list.html{$param}"
+                    >
+                        <a href="#">Woman wear <span class="arrow"></span></a>
+                       
+                    </li>
+                    <li 
+                        data-toggle="collapse" 
+                        data-target="#{$name_or_img_tag}" 
+                        class="collapsed"
+                        data-link="/product/list.html{$param}"
+                    >
+                        <a href="#">Woman wear <span class="arrow"></span></a>
+                       
+                    </li>
+                    <li 
+                        data-toggle="collapse" 
+                        data-target="#{$name_or_img_tag}" 
+                        class="collapsed"
+                        data-link="/product/list.html{$param}"
+                    >
+                        <a href="#">Woman wear <span class="arrow"></span></a>
+                       
+                    </li>
+                </ul>                
+                
             </div>
             <div module="Layout_stateLogon">
                 <!--@css(/css/module/layout/statelogon.css)-->

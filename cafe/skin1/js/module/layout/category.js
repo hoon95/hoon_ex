@@ -27,6 +27,7 @@ $(function(){
 
                         methods.aSubCategory[sParentCateNo].push( aData[i] );
                     }
+                    makeSubShow();
                 }
             });
         },
@@ -55,42 +56,46 @@ $(function(){
             return aUrl[len] ? aUrl[len] : null;
         },
 
-        show: function(overNode, iCateNo) {
+        show: function(overNode, iCateNo, subId) {
 
             if (methods.aSubCategory.hasOwnProperty(iCateNo) === false) {
                 return;
             }
 
             var aHtml = [];
-            aHtml.push('<ul>');
+            //aHtml.push('<ul>');
             $(methods.aSubCategory[iCateNo]).each(function() {
                 aHtml.push('<li><a href="'+this.link_product_list+'">'+this.name+'</a></li>');
             });
-            aHtml.push('</ul>');
+            //aHtml.push('</ul>');
 
 
             var offset = $(overNode).offset();
-            $('<div class="sub-category"></div>')
+            $(`<ul class="sub-menu collapse" id="${subId}">`)
                 .appendTo(overNode)
-                .html(aHtml.join(''))
-                .find('li').on({
-                    mouseover: function(e) {
-                        $(this).addClass('over');
-                    },
-                    mouseout: function(e) {
-                        $(this).removeClass('over');
-                    }
-                });
+                .html(aHtml.join(''));
         },
 
-        close: function() {
-            $('.sub-category').remove();
-        }
+        
     };
 
     methods.get();
 
+    function makeSubShow(){
+        $('#menu-content >li').each(function(){
+            let $this = $(this);
+            let dataName = $this.attr('data-target');
+            let FilteredName = dataName.replace(' ', '_');
+            $this.attr('data-target', FilteredName);
+            let subId = FilteredName.replace('#','');
 
+            let iCateNo = Number(methods.getParam($this.attr('data-link'), 'cate_no'));
+            
+            methods.show($this, iCateNo, subId);
+        });
+    }
+
+   /*
     $('.xans-layout-category li').on({
         mouseenter: function () {
             var $this = $(this).addClass('on'),
@@ -110,4 +115,5 @@ $(function(){
             methods.close();
         }
     });
+    */
 });
