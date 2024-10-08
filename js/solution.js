@@ -56,3 +56,8 @@ function cnt(start_num, end_num) {
     }
     return answer;
 }
+
+function solution(number, n, m) {
+    return number % n === 0 && number % m === 0 ? 1 : 0
+}
+
