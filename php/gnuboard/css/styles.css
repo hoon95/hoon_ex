@@ -1,0 +1,261 @@
+@import url(reset.css);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700|Roboto:300');
+
+/*
+font-family: 'Open Sans', sans-serif;
+font-family: 'Roboto', sans-serif;
+*/
+
+/* LAYOUT */
+.container {width:1140px; margin:0 auto;}
+.main_content {padding:81px 0 108px;}
+
+/* TYPOGRAPHY */
+body{
+	font:normal 18px/27px 'Open Sans', sans-serif;
+	color:#2e2e2e;
+}
+.main_tt {
+	font:normal 55px/1 'Roboto', sans-serif;
+	color:#fff;
+	letter-spacing:0.025em;
+	text-transform:uppercase;
+	font-weight:300;
+	
+}
+.content_tt{
+	font:normal 32px/1 'Roboto', sans-serif;
+	letter-spacing:0.025em;
+	text-transform:uppercase;
+	text-align:center;
+	margin-bottom:54px;
+}
+.content_sub_tt{
+	font:normal 23px/1 'Roboto', sans-serif;
+}
+a {
+	font-style:italic;
+	color:#f6604c;
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:underline;
+}
+
+.green_btn{
+	padding:0 32px;
+	line-height: 54px;
+	border:1px solid #f0ad64;
+	border-radius: 2px;
+	color:#f0ad64;
+	letter-spacing:0.1em;
+	font-weight:bold;
+	text-transform:uppercase;
+	display:inline-block;
+	text-decoration:none;
+	font-style:normal;
+	background:none;
+	transition:0.4s;
+}
+.btn:hover {
+	background:#f0ad64;
+	color:#fff;
+}
+hr{
+	border:0;
+	/* border-top: 1px solid #eaeaea; */
+	height:1px; 
+	background:#eaeaea;
+	margin:27px 0;
+}
+
+
+/* HEADER */
+body>header {
+	background:rgba(0,0,0,.8);
+	position:fixed;
+	z-index:101;
+	left:0; 
+	right:0;
+	padding:27px 0;
+}
+.logo {
+	float:left;	
+}
+.logo a { 
+	width:54px; height:54px; background:url(../images/logo.png) no-repeat; text-indent:-9999em; display:block;
+}
+nav {	float:right; display: flex; gap:10px;}
+
+nav ul li {float:left; margin-left:27px;}
+nav ul li a { color:#fff; text-transform:uppercase; text-decoration:none; font:normal bold  14px/54px 'Open Sans', sans-serif; letter-spacing:0.1em; }
+	
+	
+/* CONTENT */
+.banner { position:relative;}
+
+.banner_list .slide {
+	width:100%;
+	height:600px;
+	background-repeat:no-repeat;
+	background-position:center top;
+	background-size:cover;
+	text-align:center;
+	padding-top:163px;
+	box-sizing:border-box;
+}
+.banner_list .slide1 {
+	background-image:url(../images/slide-1-bg.jpg);
+}
+.banner_list .slide2 {
+	background-image:url(../images/slide-2-bg.jpg);
+}
+.banner_list .slide3 {
+	background-image:url(../images/slide-3-bg.jpg);
+}
+
+
+.fancy-box {
+	padding:0 42px;
+	line-height:108px;
+	box-shadow:7px 7px 0 rgba(0,0,0,.3);
+	display:inline-block;
+}
+.fancy-box.red{
+	background:rgba(246,96,76,.9);	
+}
+.slide_contents {
+	background:rgba(0,0,0,.8);
+	width:700px;
+	margin:-27px auto 0;
+	padding:81px 0 53px;
+	color:#fff;
+}
+.slide_contents p {
+	margin-bottom:41px;
+}
+
+
+.controls a {
+	font-size:55px;
+	color:rgba(255,255,255,.5);
+	position:absolute;
+	left:50%;
+	top:50%;
+	z-index:102;
+	transform:translateY(-50%);
+}
+.controls a.prev{
+	margin-left:-570px;
+}
+.controls a.next{
+	margin-left:536px;
+}
+.pager {
+	position:absolute;
+	left:0; right:0; bottom:27px;
+	text-align:center;
+	z-index:103;
+}
+.pager span{
+	width:15px; height:15px;
+	background:rgba(255,255,255,.8);
+	border:3px solid transparent;
+	margin:0 15px; border-radius:50%;
+	text-indent:-9999em; display:inline-block;
+}
+.pager span.cycle-pager-active{
+	background:none;
+	border:3px solid rgba(255,255,255,.8);	
+}
+.main_content p {
+	text-align:center;
+}
+.main_content .project_link {
+	margin-bottom:54px;
+}
+
+.project_list li{
+	float:left; width:360px; margin-right:30px;	
+	 padding:3px; border:1px solid #919191; box-sizing:border-box;	position:relative; margin-bottom:27px;
+	/* 
+	border:3px solid #fff; box-sizing:border-box;
+	box-shadow:0 0 0 1px #919191;
+	*/	
+	/*
+	border:1px solid #919191; box-shadow:inset 0 0 0 3px #fff; box-sizing:border-box; 그림자는 실체가 없으니까 그부분까지 이미지 나온다
+	*/
+}
+.project_list li img {
+	width:100%; height:auto;
+}
+.project_list li:nth-child(3n) {
+	margin-right:0;
+}
+.project_list li .hover_contents{
+	position:absolute; left:3px; right:3px; top:3px; bottom:3px;
+	background:rgba(0,0,0,.75); padding-top:79px; text-align:center; opacity:0; transition:opacity 0.4s;
+}	
+.project_list li .hover_contents h4{
+	margin-bottom:48px; font-size:23px; color:#f4af55;
+}
+.project_list li .hover_contents a{
+	font-size:14px; color:#fff; text-transform:uppercase; font-style:normal;
+}
+.project_list li:hover .hover_contents {
+	opacity:1;
+}
+/* FOOTER */
+footer {text-align:center;}
+footer .fancy-box {line-height:81px; padding:0 35px;}
+footer .envelope_icon { font-size:55px; color:#fff;}
+.fancy-box.orange{background:rgba(244,175,85,.9);}
+
+.subscribe {background:#333538; padding:81px 0 71px;margin-top:-27px;}
+.subscribe p{width:685px; margin:0 auto 37px; color:#fff;}
+
+.subscribe form input[type="email"] {width:300px; height:56px; display:inline-block; padding:0 19px; border:none; font-style:italic; color:#000;}
+
+.subscribe form input[type="email"]::placeholder{
+	color:#989898;
+}
+.subscribe form input[type="sumbit"]{
+	vertical-align:bottom;
+}
+
+footer .share {
+	margin:54px 0;
+}
+footer .share a{
+	background:#f6604c; font-size: 14px; color:#fff; border-radius:5px; width:24px; height:24px; display:inline-block; transition:0.4s;
+}
+footer .share a:hover {
+	background:#ebebeb; color:#f6604c;
+}
+footer .copy {
+	margin-bottom:50px;
+}	
+/* ABOUT */
+.page_banner { height:350px; background-repeat:no-repeat; background-position:center top; background-size:cover; position:relative;}
+.page_banner h2{position:absolute; left:50%; bottom:-27px; transform:translateX(-50%);}
+.page_banner.about{background-image:url(../images/banner-about.jpg);}
+.fancy-box.gray { background:rgba(51,53,56,.9);}
+
+/* PORTFOLIO */
+.page_banner.portfolio{	background-image:url(../images/banner-portfolio.png);}
+
+.subpage > h3 {
+	font-size:16px; font-weight:bold; text-transform:uppercase; color:#989898; margin-top:27px; text-align:center;
+}
+.subpage .content_tt { font-weight:bold; margin:16px 0 27px;}
+.subpage > p {width:780px; margin:0 auto 27px; text-align:center;}
+.subpage .portfolio_nav {width:100%;}
+.portfolio_nav .prev_project { float:left;}
+.portfolio_nav .next_project { float:right;}
+.portfolio_slider img {width:100%;}
+.portfolio_slider .controls a.prev{ left:50px; margin-left:0;}
+.portfolio_slider .controls a.next{ left:100%; transform:translate(-100%,-50%); margin-left:-50px;}
+
+
+
+

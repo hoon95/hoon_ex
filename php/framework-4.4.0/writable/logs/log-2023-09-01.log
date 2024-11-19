@@ -1,0 +1,21 @@
+CRITICAL - 2023-09-01 02:42:55 --> Call to undefined function App\Controllers\render()
+in APPPATH\Controllers\board.php on line 9.
+ 1 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->list()
+ 2 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\framework-4.4.0\\public\\index.php')
+CRITICAL - 2023-09-01 03:20:13 --> Call to undefined function App\Controllers\db_connet()
+in APPPATH\Controllers\board.php on line 9.
+ 1 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->list()
+ 2 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\framework-4.4.0\\public\\index.php')
+CRITICAL - 2023-09-01 03:20:27 --> Call to undefined function App\Controllers\db_connet()
+in APPPATH\Controllers\board.php on line 9.
+ 1 SYSTEMPATH\CodeIgniter.php(915): App\Controllers\Board->list()
+ 2 SYSTEMPATH\CodeIgniter.php(492): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Board))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\hoon\\framework-4.4.0\\public\\index.php')
